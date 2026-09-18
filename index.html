@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Antigravity AI | Mobile Control</title>
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0b0f17">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Antigravity">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-mobile">
+
+  <!-- Mobile App Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="avatar-glow">🤖</div>
+      <div>
+        <h1 class="app-title">Antigravity AI</h1>
+        <div class="status-indicator">
+          <span class="dot-online"></span>
+          <span>Conectado 24/7</span>
+        </div>
+      </div>
+    </div>
+    
+    <button class="btn-icon" id="btnInstallPwa" title="Adicionar à Tela Inicial">
+      📲
+    </button>
+  </header>
+
+  <!-- PWA Install Banner -->
+  <div class="install-banner" id="installBanner" style="display: none;">
+    <div class="banner-content">
+      <span>📲 <strong>Instale no Celular:</strong> Clique em "Compartilhar" e depois <em>"Adicionar à Tela Inicial"</em>.</span>
+      <button class="btn-close-banner" id="btnCloseBanner">✕</button>
+    </div>
+  </div>
+
+  <!-- Main Views Container -->
+  <main class="app-body">
+
+    <!-- TAB 1: CHAT AI VIEW -->
+    <section class="view-section active" id="viewChat">
+      <!-- Quick Action Chips -->
+      <div class="chips-container">
+        <button class="chip" data-cmd="status">🟢 Status Vercel</button>
+        <button class="chip" data-cmd="cotacao">📈 Cotações Hoje</button>
+        <button class="chip" data-cmd="github">📦 Repositórios GitHub</button>
+        <button class="chip" data-cmd="ajuda">❓ Comandos</button>
+      </div>
+
+      <!-- Chat Feed -->
+      <div class="chat-feed" id="chatFeed">
+        <!-- AI Welcome Message -->
+        <div class="message msg-ai">
+          <div class="msg-avatar">🤖</div>
+          <div class="msg-bubble">
+            <strong>Olá, Diego! ⚡</strong><br>
+            Estou ativo no seu celular. Como posso ajudar você agora?<br><br>
+            Você pode pedir para checar seus sites, consultar cotações ou enviar instruções.
+            <div class="msg-time">Agora</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Field -->
+      <div class="chat-input-bar">
+        <input type="text" id="chatInput" placeholder="Digite uma instrução ou comando..." autocomplete="off">
+        <button class="btn-send" id="btnSend">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB 2: STATUS & PROJECTS VIEW -->
+    <section class="view-section" id="viewStatus">
+      <div class="view-header">
+        <h2>Seus Projetos ao Vivo</h2>
+        <p>Monitoramento contínuo na Vercel & GitHub</p>
+      </div>
+
+      <div class="status-cards-list">
+        <!-- Digital24h Card -->
+        <div class="card-status">
+          <div class="card-status-header">
+            <div class="project-info">
+              <strong>digital24h.vercel.app</strong>
+              <span class="badge-tag tag-success">● 100% ONLINE</span>
+            </div>
+            <a href="https://digital24h.vercel.app" target="_blank" class="link-external">Abrir ↗</a>
+          </div>
+          <div class="card-details">
+            <div><span>Uptime:</span> <strong>99.99%</strong></div>
+            <div><span>Hospedagem:</span> <strong>Vercel Production</strong></div>
+            <div><span>GitHub:</span> <strong>ntienko-web/digital24h</strong></div>
+          </div>
+        </div>
+
+        <!-- Google Chat Bot Card -->
+        <div class="card-status">
+          <div class="card-status-header">
+            <div class="project-info">
+              <strong>google-chat-bot</strong>
+              <span class="badge-tag tag-success">● 100% ONLINE</span>
+            </div>
+            <a href="https://google-chat-bot-one.vercel.app" target="_blank" class="link-external">Abrir ↗</a>
+          </div>
+          <div class="card-details">
+            <div><span>Servidor:</span> <strong>Vercel Serverless</strong></div>
+            <div><span>GitHub:</span> <strong>ntienko-web/google-chat-bot</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: CURRENCY RATES VIEW -->
+    <section class="view-section" id="viewRates">
+      <div class="view-header">
+        <h2>Cotações em Tempo Real</h2>
+        <p>Atualização autônoma via IA</p>
+      </div>
+
+      <div class="rates-grid">
+        <div class="rate-card">
+          <div class="rate-icon">💵</div>
+          <div class="rate-info">
+            <span class="rate-name">Dólar Comercial</span>
+            <strong class="rate-value" id="valUsd">R$ 5,62</strong>
+          </div>
+          <span class="rate-trend trend-up">+0.3%</span>
+        </div>
+
+        <div class="rate-card">
+          <div class="rate-icon">💶</div>
+          <div class="rate-info">
+            <span class="rate-name">Euro</span>
+            <strong class="rate-value" id="valEur">R$ 6,15</strong>
+          </div>
+          <span class="rate-trend trend-up">+0.1%</span>
+        </div>
+
+        <div class="rate-card">
+          <div class="rate-icon">₿</div>
+          <div class="rate-info">
+            <span class="rate-name">Bitcoin</span>
+            <strong class="rate-value" id="valBtc">R$ 380.500</strong>
+          </div>
+          <span class="rate-trend trend-up">+2.4%</span>
+        </div>
+      </div>
+
+      <button class="btn-refresh" id="btnRefreshRates">
+        🔄 Atualizar Cotações Agora
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar (iOS/Android Native Style) -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="viewChat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">Chat</span>
+    </button>
+    <button class="nav-item" data-tab="viewStatus">
+      <span class="nav-icon">🟢</span>
+      <span class="nav-label">Status</span>
+    </button>
+    <button class="nav-item" data-tab="viewRates">
+      <span class="nav-icon">📈</span>
+      <span class="nav-label">Cotações</span>
+    </button>
+  </nav>
+
+  <script src="/main.js" type="module"></script>
+</body>
+</html>

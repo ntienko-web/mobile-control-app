@@ -1,0 +1,17 @@
+{
+  "name": "Antigravity AI Mobile",
+  "short_name": "Antigravity",
+  "description": "Controle Remoto do Assistente Antigravity no Celular",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f17",
+  "theme_color": "#00f0ff",
+  "icons": [
+    {
+      "src": "https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/robot_2/default/48px.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

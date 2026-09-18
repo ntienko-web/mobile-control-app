@@ -1,0 +1,8 @@
+{
+  "name": "antigravity-mobile-control",
+  "version": "1.0.0",
+  "description": "App PWA de Controle Remoto Antigravity no Celular",
+  "scripts": {
+    "start": "npx serve public"
+  }
+}
